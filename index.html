@@ -278,7 +278,7 @@
       inset: 0;
       z-index: 0;
       background: url("assets/image2-hero-premium.png") center top / cover no-repeat;
-      opacity: .36;
+      opacity: .86;
       pointer-events: none;
     }
     .hero::after {
@@ -287,22 +287,26 @@
       inset: 0;
       z-index: 2;
       background:
-        linear-gradient(90deg, rgba(7,9,13,.98) 0%, rgba(7,9,13,.78) 39%, rgba(7,9,13,.08) 72%),
-        linear-gradient(0deg, #07090d 0%, rgba(7,9,13,.95) 34%, rgba(7,9,13,.16) 67%, transparent 84%);
+        linear-gradient(90deg, rgba(7,9,13,.86) 0%, rgba(7,9,13,.66) 42%, rgba(7,9,13,.18) 76%),
+        linear-gradient(0deg, rgba(7,9,13,.98) 0%, rgba(7,9,13,.78) 38%, rgba(7,9,13,.08) 70%, transparent 84%);
       pointer-events: none;
     }
     .hero-photo {
       position: absolute; top: 0; right: 0;
-      width: 66%; height: 1070px;
+      width: 58%; height: 880px;
+      top: 210px;
+      right: 52px;
       object-fit: cover; object-position: center 10%;
-      filter: contrast(1.03);
-      opacity: .92;
+      filter: contrast(1.05) saturate(.86);
+      opacity: .38;
+      border-radius: 0 0 18px 18px;
+      clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
       z-index: 1;
     }
     .hero-copy {
       position: relative;
       z-index: 3;
-      padding: 610px 68px 90px;
+      padding: 560px 68px 90px;
       text-shadow: 0 3px 18px rgba(0,0,0,.9);
     }
     .hero-copy .section-label,
@@ -321,7 +325,7 @@
       color: #fff;
     }
     .page .intro-band .accent {
-      color: #fff;
+      color: #fff !important;
     }
     .story-photo {
       width: calc(100% + 156px);
@@ -467,12 +471,25 @@
       inset: 0;
       z-index: -1;
       background: url("assets/image2-official-section.png") center top / cover no-repeat;
-      opacity: .18;
+      opacity: .36;
       pointer-events: none;
     }
     .image2-section .wrap {
       position: relative;
       z-index: 1;
+    }
+    .image2-section .wrap > p:not(.cta-note):not(.small),
+    .image2-section .wrap > .lead {
+      padding: 22px 28px;
+      border-radius: 16px;
+      background: rgba(246,242,234,.82);
+      backdrop-filter: blur(4px);
+    }
+    .image2-section .intro-band p,
+    .image2-section .intro-band .lead {
+      padding: 0;
+      background: transparent;
+      backdrop-filter: none;
     }
     .official-bar {
       position: absolute;
