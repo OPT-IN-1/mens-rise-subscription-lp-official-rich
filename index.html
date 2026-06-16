@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1080">
+  <title>Men's Rise サブスク LP</title>
+  <style>
+    :root {
+      --black: #07090d;
+      --ink: #151922;
+      --navy: #111d2e;
+      --navy-soft: #1b2a40;
+      --paper: #f6f2ea;
+      --cream: #fffaf0;
+      --gray: #ece7dc;
+      --muted: #6f6a61;
+      --red: #b9232d;
+      --red-deep: #84141c;
+      --red-pale: #fff0ef;
+      --line: #d7d0c2;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #222; color: var(--ink); }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-weight: 500;
+      letter-spacing: .02em;
+    }
+    .page {
+      width: 1080px;
+      margin: 0 auto 2px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 92% 0%, rgba(17,29,46,.07), transparent 28%),
+        var(--paper);
+    }
+    .wrap { padding: 110px 78px; }
+    .dark { background: var(--black); color: #fff; }
+    .white { background: #fff; }
+    .eyebrow {
+      display: inline-block;
+      padding: 12px 20px 10px;
+      background: var(--navy);
+      color: #fff;
+      border-left: 8px solid var(--red);
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      line-height: 1;
+    }
+    .dark .eyebrow,
+    .hero .eyebrow,
+    .final .eyebrow {
+      background: var(--cream);
+      color: var(--ink);
+    }
+    h1, h2, h3, p {
+      margin-top: 0;
+      word-break: auto-phrase;
+      overflow-wrap: normal;
+    }
+    h1 { font-size: 76px; line-height: 1.22; letter-spacing: -.045em; font-weight: 950; }
+    h2 { font-size: 56px; line-height: 1.3; letter-spacing: -.035em; font-weight: 950; }
+    h3 { font-size: 36px; line-height: 1.45; font-weight: 900; }
+    p, li {
+      font-size: 29px;
+      line-height: 1.9;
+      line-break: strict;
+      word-break: auto-phrase;
+      overflow-wrap: normal;
+      text-wrap: pretty;
+    }
+    strong {
+      font-weight: 950;
+      white-space: nowrap;
+      word-break: keep-all;
+    }
+    .lead { font-size: 34px; line-height: 1.75; }
+    .small { font-size: 21px; line-height: 1.7; color: var(--muted); }
+    .dark .small { color: #aaa; }
+    .section-head { margin-bottom: 64px; }
+    .section-head h2 { margin: 28px 0 0; }
+    .rule { width: 100%; height: 2px; background: var(--ink); margin: 42px 0; }
+    .dark .rule { background: #555; }
+    .accent { color: var(--red); }
+    .dark .accent,
+    .final .accent {
+      color: #fff;
+    }
+    .marker { background: linear-gradient(transparent 64%, rgba(185,35,45,.18) 64%); }
+    .keep { white-space: nowrap; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+      color: var(--red);
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: .18em;
+    }
+    .section-label::before {
+      content: "";
+      width: 44px;
+      height: 2px;
+      background: currentColor;
+    }
+    .dark .section-label,
+    .hero .section-label,
+    .final .section-label {
+      color: #d7d0c2;
+    }
+    .brand {
+      display: inline-flex;
+      width: 245px;
+      max-width: 72%;
+      vertical-align: -.28em;
+      margin: 0 .15em;
+    }
+    .brand img { display: block; width: 100%; height: auto; }
+    .dark .brand img, .hero .brand img, .final .brand img { filter: invert(1); }
+    .brand-block {
+      display: block;
+      width: 330px;
+      max-width: 70%;
+      margin: 26px 0;
+    }
+    .brand-block img { display: block; width: 100%; height: auto; }
+    .dark .brand-block img, .hero .brand-block img, .final .brand-block img { filter: invert(1); }
+    .card {
+      margin: 28px 0;
+      padding: 42px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 18px 38px rgba(17,29,46,.12);
+    }
+    .dark .card { background: #101722; border-color: rgba(255,255,255,.14); box-shadow: 0 18px 42px rgba(0,0,0,.34); }
+    .card h3 { margin-bottom: 12px; }
+    .card p { margin-bottom: 0; }
+    .num {
+      display: inline-grid;
+      place-items: center;
+      width: 64px; height: 64px;
+      margin-right: 18px;
+      background: var(--red); color: #fff;
+      font-size: 31px; font-weight: 950;
+    }
+    .checklist { list-style: none; padding: 0; margin: 0; }
+    .checklist li {
+      position: relative;
+      margin: 18px 0;
+      padding: 25px 28px 25px 78px;
+      background: rgba(255,255,255,.88);
+      border-bottom: 2px solid var(--line);
+      border-radius: 12px;
+    }
+    .checklist li::before {
+      content: "✓";
+      position: absolute; left: 25px; top: 23px;
+      color: var(--red);
+      font-size: 34px; font-weight: 950;
+    }
+    .quote {
+      margin: 55px 0;
+      padding: 45px 50px;
+      border-left: 12px solid var(--red);
+      background: var(--navy);
+      color: #fff;
+      font-size: 39px;
+      line-height: 1.6;
+      font-weight: 900;
+    }
+    .dark .quote,
+    .final .quote {
+      border-left-color: var(--red);
+    }
+    .quote.compact {
+      padding: 38px 42px;
+      font-size: 25px;
+      line-height: 1.55;
+      white-space: nowrap;
+      letter-spacing: 0;
+    }
+    .story-emphasis {
+      margin: 45px 0;
+      padding: 34px 40px;
+      background: #fff;
+      border-left: 10px solid var(--red);
+      box-shadow: 0 18px 38px rgba(17,29,46,.1);
+      font-size: 32px;
+      line-height: 1.55;
+      font-weight: 900;
+    }
+    .cta-zone {
+      position: relative;
+      margin: 70px 0 15px;
+      padding: 38px 105px 38px 42px;
+      min-height: 148px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 42%),
+        linear-gradient(135deg, #d4313b 0%, var(--red) 48%, var(--red-deep) 100%);
+      color: #fff;
+      text-align: center;
+      font-size: 34px;
+      line-height: 1.35;
+      font-weight: 950;
+      letter-spacing: .04em;
+      border-radius: 18px;
+      box-shadow:
+        0 8px 0 #5d0d13,
+        0 24px 42px rgba(132,20,28,.24),
+        0 0 0 7px rgba(185,35,45,.12),
+        inset 0 1px 0 rgba(255,255,255,.32);
+      text-shadow: none;
+    }
+    .hero .cta-zone,
+    .dark .cta-zone,
+    .final .cta-zone {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 42%),
+        linear-gradient(135deg, #d4313b 0%, var(--red) 48%, var(--red-deep) 100%);
+      color: #fff;
+      box-shadow:
+        0 8px 0 #4f0b10,
+        0 24px 42px rgba(185,35,45,.22),
+        0 0 0 7px rgba(255,255,255,.08),
+        inset 0 1px 0 rgba(255,255,255,.32);
+    }
+    .cta-zone::before {
+      content: "START";
+      position: absolute;
+      top: 12px;
+      left: 18px;
+      padding: 5px 10px 4px;
+      background: var(--cream);
+      color: var(--red-deep);
+      font-size: 15px;
+      line-height: 1;
+      letter-spacing: .16em;
+      border-radius: 3px;
+    }
+    .cta-zone::after {
+      content: "→";
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border: 2px solid rgba(255,255,255,.72);
+      background: rgba(255,255,255,.12);
+      border-radius: 50%;
+      font-size: 38px;
+      line-height: 1;
+      font-weight: 900;
+    }
+    .cta-note { text-align: center; font-size: 21px; color: var(--muted); }
+    .hero {
+      min-height: 1850px;
+      position: relative;
+      background: var(--black);
+      color: #fff;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(7,9,13,.98) 0%, rgba(7,9,13,.78) 39%, rgba(7,9,13,.08) 72%),
+        linear-gradient(0deg, #07090d 0%, rgba(7,9,13,.95) 34%, rgba(7,9,13,.16) 67%, transparent 84%);
+      pointer-events: none;
+    }
+    .hero-photo {
+      position: absolute; top: 0; right: 0;
+      width: 66%; height: 1070px;
+      object-fit: cover; object-position: center 10%;
+      filter: contrast(1.03);
+      opacity: .92;
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 3;
+      padding: 610px 68px 90px;
+      text-shadow: 0 3px 18px rgba(0,0,0,.9);
+    }
+    .hero-copy .section-label,
+    .hero-copy .eyebrow {
+      text-shadow: none;
+    }
+    .hero-copy .topline { font-size: 25px; letter-spacing: .1em; margin-bottom: 28px; }
+    .hero-copy h1 { max-width: 920px; margin-bottom: 38px; }
+    .hero-copy .lead { max-width: 860px; }
+    .price { margin-top: 45px; font-size: 34px; font-weight: 900; }
+    .price b { font-size: 76px; letter-spacing: -.04em; }
+    .intro-band {
+      margin: 0 -78px;
+      padding: 85px 78px;
+      background: linear-gradient(135deg, var(--black), var(--navy));
+      color: #fff;
+    }
+    .story-photo {
+      width: calc(100% + 156px);
+      height: 850px;
+      margin: 0 -78px 70px;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+    .rise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .rise-item {
+      min-height: 300px;
+      padding: 34px;
+      background: var(--navy);
+      color: #fff;
+      border-top: 10px solid var(--red);
+    }
+    .rise-item b { display: block; font-size: 60px; line-height: 1; margin-bottom: 18px; }
+    .rise-item h3 { font-size: 30px; margin: 0 0 9px; }
+    .rise-item p { font-size: 23px; line-height: 1.6; margin: 0; color: #ccc; }
+    .feature { padding: 42px 0; border-bottom: 2px solid var(--line); }
+    .feature h3 { margin-bottom: 10px; }
+    .feature p { margin-bottom: 0; }
+    .table {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 18px 38px rgba(17,29,46,.12);
+    }
+    .tr { display: grid; grid-template-columns: 1.55fr .9fr 1.1fr; border-bottom: 1px solid #d8d8d2; }
+    .tr:last-child { border-bottom: 0; }
+    .tr > div {
+      padding: 25px 20px;
+      font-size: 22px;
+      line-height: 1.5;
+      border-right: 1px solid #d8d8d2;
+      display: flex;
+      align-items: center;
+    }
+    .tr > div:last-child { border-right: 0; font-weight: 900; }
+    .th { background: var(--navy); color: #fff; font-weight: 900; }
+    .tr:not(.th) > div:last-child {
+      position: relative;
+      background: #fff1ef;
+      color: var(--red);
+      font-size: 24px;
+      font-weight: 950;
+    }
+    .tr:not(.th) > div:nth-child(2) {
+      background: #f1f1ee;
+      color: #777;
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+    }
+    .th > div:last-child {
+      background: var(--red);
+      color: #fff;
+    }
+    .teacher {
+      margin: 36px 0;
+      display: grid;
+      grid-template-columns: 40% 60%;
+      min-height: 390px;
+      overflow: hidden;
+      background: #0b111b;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 18px;
+    }
+    .teacher img {
+      width: 100%;
+      height: 100%;
+      min-height: 390px;
+      display: block;
+      object-fit: cover;
+      object-position: center 18%;
+    }
+    .teacher-copy {
+      padding: 48px 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .teacher-copy h3 { margin-bottom: 20px; font-size: 34px; line-height: 1.35; }
+    .teacher-copy p { margin: 0; font-size: 23px; line-height: 1.75; color: #d0d0d0; }
+    .results {
+      width: calc(100% + 80px);
+      margin: 20px -40px 40px;
+      display: block;
+    }
+    .price-box {
+      padding: 58px 40px;
+      background: linear-gradient(135deg, var(--navy), #05070b);
+      color: #fff;
+      text-align: center;
+      border-top: 12px solid var(--red);
+    }
+    .price-box .monthly { font-size: 34px; }
+    .price-box .big { font-size: 105px; line-height: 1; font-weight: 950; letter-spacing: -.05em; }
+    .price-box .tax { font-size: 26px; }
+    .faq { padding: 34px 0; border-bottom: 2px solid var(--line); }
+    .faq h3 { padding-left: 62px; position: relative; margin-bottom: 14px; font-size: 31px; }
+    .faq h3::before { content: "Q"; position: absolute; left: 0; color: var(--red); font-size: 42px; }
+    .faq p { margin: 0; padding-left: 62px; font-size: 25px; }
+    .final {
+      min-height: 1800px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 80% 8%, rgba(185,35,45,.18), transparent 30%),
+        linear-gradient(135deg, #07090d, #101a2a);
+      color: #fff;
+      text-align: center;
+    }
+    .final .wrap { padding-top: 150px; padding-bottom: 150px; }
+    .final h2 { font-size: 77px; margin: 42px 0; }
+    .final p { max-width: 850px; margin-left: auto; margin-right: auto; }
+    .legal-links {
+      margin-top: 70px;
+      padding-top: 34px;
+      border-top: 1px solid #333;
+      display: flex;
+      justify-content: center;
+      gap: 42px;
+      flex-wrap: wrap;
+    }
+    .legal-links a {
+      color: #bdbdbd;
+      font-size: 21px;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      word-break: keep-all;
+    }
+    @media print { body { background: #fff; } .page { margin: 0; } }
+  </style>
+</head>
+<body>
+  <section class="page hero" data-page="1">
+    <img class="hero-photo" src="assets/ryota.jpg" alt="">
+    <div class="hero-copy">
+      <p class="topline">
+        <span class="section-label">START</span><br>
+        <span class="keep">YouTube登録37万人「リョータ」がつくった</span><br>
+        <span class="brand-block"><img src="assets/brand-logo-original.png" alt="Men's Rise"></span>
+      </p>
+      <span class="eyebrow">男磨きのサブスク</span>
+      <h1>髪も、肌も、体も、服も。<br>あなたの「垢抜け」、<br><span class="accent">プロにまるごと、</span><br>任せませんか。</h1>
+      <p class="lead">
+        <span class="keep">美容・ヘア・筋トレ・食事・ファッション。</span><br>
+        <span class="keep">各分野のプロが、毎月あなたをチェックして、</span><br>
+        <span class="keep">「次はこれをやろう」を渡してくれる。</span>
+      </p>
+      <p class="lead"><strong>あなたは、言われた通りにやるだけ。</strong></p>
+      <p class="price">月 <b>5,500</b> 円（税込）<br>いつでも解約OK</p>
+      <div class="cta-zone">今日から、プロに任せてみる</div>
+      <p class="cta-note">スマホから3分で登録完了。</p>
+    </div>
+  </section>
+
+  <section class="page" data-page="2">
+    <div class="wrap">
+      <div class="intro-band">
+        <span class="eyebrow">WHAT IS IT?</span>
+        <h2 style="margin-top:32px">男磨きを、プロに<br><span class="accent">「丸投げ」できる</span><br>サブスクです。</h2>
+        <p class="lead">
+          <span class="keep">自分であれこれ調べるのをやめて、</span><br>
+          <span class="keep">各分野のプロに「これで合ってますか？」と</span><br>
+          <span class="keep">見てもらいながら、</span><br>
+          <span class="keep">髪・肌・体・服を、まとめて整えていく。</span><br>
+          そういう場所です。
+        </p>
+      </div>
+      <div class="section-head" style="margin-top:100px">
+        <span class="eyebrow">CHECK</span>
+        <h2>男磨き、「何から始めればいいか」で止まっていませんか？</h2>
+      </div>
+      <p class="lead"><span class="keep">ちょっとだけ、あてはまるものがあるか</span><br>見てみてください。</p>
+      <ul class="checklist">
+        <li><span class="keep">垢抜けたい気持ちはあるけど、</span><br><strong>「結局、何から手をつければいいの？」</strong><br>で止まっている。</li>
+        <li><span class="keep">YouTubeも記事もたくさん見て、</span><br><strong>知識だけはあるのに、見た目は前のまま。</strong></li>
+        <li><span class="keep">自分なりに色々試した。けど、</span><br><strong>「これ、自分に合ってるのかな？」</strong><br>がずっと分からない。</li>
+        <li><span class="keep">たまにやる気が出ても、</span><br><span class="keep">周りに同じことをしている人がいなくて、</span><br>いつのまにか止めている。</li>
+      </ul>
+      <p class="lead" style="margin-top:55px"><span class="keep">ひとつでも心当たりがあれば、</span><br>続きを読んでみてください。</p>
+      <div class="quote">それ、あなたのセンスや<br>根性の問題じゃないです。</div>
+      <p><span class="keep">英会話も、独学より、</span><br><span class="keep">プロに発音を直してもらう方が早い。</span><br><span class="keep">ダイエットも、自己流より、</span><br><span class="keep">トレーナーに見てもらう方が確実。</span></p>
+      <p class="lead"><strong><span class="keep">なのに、なぜか「見た目」だけ、</span><br>みんな一人で頑張ってる。</strong></p>
+    </div>
+  </section>
+
+  <section class="page white" data-page="3">
+    <div class="wrap">
+      <img class="story-photo" src="assets/ryota-story.jpg" alt="リョータ">
+      <div class="section-head">
+        <span class="eyebrow">MY STORY</span>
+        <h2>正直に言うと、僕も<br><span class="marker">5年・300万円、</span><br>遠回りしました</h2>
+      </div>
+      <p><span class="keep">リョータといいます。</span><br><span class="keep">今でこそ男磨きのYouTubeを</span><br><span class="keep">37万人くらいの人が見てくれてますが、</span><br>昔の僕は、<strong>完全に自己流で迷子</strong>でした。</p>
+      <p><span class="keep">大学までサッカーをやってて、</span><br><span class="keep">引退したら「俺、何もないな」って</span><br><span class="keep">感じになって。</span><br><span class="keep">そこから「かっこよくなりたい」と思って、</span><br>男磨きを始めたんです。</p>
+      <p><span class="keep">朝から晩までYouTubeを漁って、</span><br><span class="keep">眉、髪、ファッション、筋トレ、</span><br><span class="keep">肌ケア、医療美容。</span><br><span class="keep">全部、自分で調べて、自分で選んで、</span><br><span class="keep">自分でやった。</span><br>気づけば5年で、累計300万円。</p>
+      <div class="quote compact">見た目は確かに多少よくなったものの、現実は思ったほど変わっていません。</div>
+      <p><span class="keep">あるとき友達に、</span><br><span class="keep">「リョータ、お前なんか</span><br><span class="keep">他の男磨きYouTuberと一緒やん」って</span><br><span class="keep">言われて、ハッとした。</span><br><span class="keep">僕が自己流で手に入れたのは、</span><br><strong>「よくいる、ちょっと整った人」</strong><br>止まりやった。</p>
+      <p><span class="keep">何が足りなかったか。</span><br><span class="keep">あとで分かったんです。</span><br>情報じゃなくて、<br><strong><span class="keep">「これで合ってるよ」って</span><br><span class="keep">プロに言ってもらえる環境</span></strong><br>やった。</p>
+      <p><span class="keep">自己流って、</span><br><span class="keep">合ってるか分からないまま走るから、</span><br><span class="keep">お金も時間も、</span><br><span class="keep">知らんうちに溶けていくんですよね。</span></p>
+      <div class="story-emphasis">各分野のプロに直接見てもらってから、景色が変わりました。</div>
+      <p><span class="keep">だから、昔の僕みたいに</span><br><span class="keep">遠回りする人を減らしたくて、</span><br><strong>MEN'S RISE</strong>を作りました。</p>
+      <div class="section-head" style="margin-top:120px">
+        <span class="eyebrow">WHY</span>
+        <h2>変わらない理由は、たぶん<br>「自分で調べている」からです</h2>
+      </div>
+      <div class="card"><h3><span class="num">1</span>何からどの順番でやればいいか決まらない</h3><p><span class="keep">情報が多すぎて、選べない。</span><br><span class="keep">調べているうちに、</span><br>時間だけが過ぎていく。</p></div>
+      <div class="card"><h3><span class="num">2</span>自分に合っているか、誰も教えてくれない</h3><p><span class="keep">似合わない髪型、効いていない筋トレ、</span><br><span class="keep">肌に合わないケアを</span><br><span class="keep">「正解」だと思って続けてしまう。</span></p></div>
+      <div class="card"><h3><span class="num">3</span>一人だから、続かない</h3><p><span class="keep">仕事で疲れて、</span><br><span class="keep">周りに同じことをやっている仲間もいない。</span><br>だいたい数ヶ月で止まる。</p></div>
+      <div class="quote">必要なのは、今のあなたをプロが直接見て、<br>「次これやって」と教えてくれる環境。</div>
+    </div>
+  </section>
+
+  <section class="page" data-page="4">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">HOW IT WORKS</span>
+        <h2><span class="brand-block"><img src="assets/brand-logo-original.png" alt="Men's Rise"></span>あなたの男磨きを<br>「こう」進めます</h2>
+      </div>
+      <div class="card"><h3><span class="num">1</span>入会したら、まずシートを記入</h3><p><span class="keep">今の髪・肌・体型・服を、</span><br>写真とアンケートで送る。</p></div>
+      <div class="card"><h3><span class="num">2</span>各分野のプロが、チャットで添削</h3><p><span class="keep">あなたの特徴を、</span><br>プロの目で直接見てくれる。</p></div>
+      <div class="card"><h3><span class="num">3</span>あなた専用の「カルテ」が届く</h3><p><span class="keep">何を・どの順番でやるかが、</span><br>決まった状態でスタートできる。</p></div>
+      <div class="card"><h3><span class="num">4</span>写真を送れば、プロがチェック</h3><p><span class="keep">ズレたら、すぐ戻せる。</span><br>その後も添削は続きます。</p></div>
+      <h3 style="margin-top:90px">6つの分野を、ブランド名のまま<br><span class="marker">RISE</span> で整理しています。</h3>
+      <div class="rise-grid">
+        <div class="rise-item"><b>R</b><h3>Root　軸</h3><p>マインド<br>「自分はこう在りたい」</p></div>
+        <div class="rise-item"><b>I</b><h3>Image　魅せ方</h3><p>髪型・ファッション・美容</p></div>
+        <div class="rise-item"><b>S</b><h3>Shape　身体</h3><p>筋トレ・食事</p></div>
+        <div class="rise-item"><b>E</b><h3>Environment　環境</h3><p>仲間・卸価格・提携割引</p></div>
+      </div>
+      <p class="lead" style="margin-top:55px"><span class="keep">世の中の男磨きは、</span><br><span class="keep">たいてい魅せ方を、</span><br><span class="keep">自分で調べて自分でやるだけ。</span></p>
+      <div class="quote">MEN'S RISEは、これを<br>プロの添削つきで、<br>まるごと回します。</div>
+      <div class="section-head" style="margin-top:110px">
+        <span class="eyebrow">ALL INCLUDED</span>
+        <h2>月5,500円に、<br>これだけ含まれています</h2>
+      </div>
+      <div class="feature"><h3>専用カルテ</h3><p><span class="keep">入った初日に、迷いがなくなる。</span><br><span class="keep">何を・どの順番でやるかを</span><br>1枚にまとめて渡します。</p></div>
+      <div class="feature"><h3>チャット添削し放題</h3><p><span class="keep">美容・筋トレ・食事・髪・服。</span><br><span class="keep">写真を送れば、</span><br><span class="keep">各分野のプロが教えてくれます。</span><br><span class="keep">ここが、このサービスの中心です。</span></p></div>
+      <div class="feature"><h3>毎日のルーティン＋日報</h3><p><span class="keep">手順まで決まったルーティンを渡すので、</span><br><span class="keep">考えなくていい。</span><br><span class="keep">毎日の報告で、自然と続く仕組みに。</span></p></div>
+      <div class="feature"><h3>週1の講義・毎週の振り返り・月1のオフ会</h3><p><span class="keep">実技講義はアーカイブあり。</span><br><span class="keep">東京・大阪のオフ会で、</span><br><span class="keep">同じことをしている仲間ができます。</span></p></div>
+      <div class="feature"><h3>卸価格・提携割引</h3><p><span class="keep">サロン専売品を卸価格で。</span><br><span class="keep">提携サロン・クリニックの割引も。</span><br><span class="keep">頭皮診断・AGA診断は無料。</span></p></div>
+      <div class="feature"><h3>今月号</h3><p><span class="keep">各分野のプロが</span><br><span class="keep">「自分で試して良かったものだけ」を、</span><br>曜日ごとに配信します。</p></div>
+    </div>
+  </section>
+
+  <section class="page white" data-page="5">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">SMART VALUE</span>
+        <h2>じつは、会費の「元」は、<br>ふつうに取れます</h2>
+      </div>
+      <p class="lead"><span class="keep">普通のサブスクは、</span><br><span class="keep">入るほどお金が減ります。</span><br>でも<strong>MEN'S RISE</strong>は、<br><span class="keep">提携割引と卸価格で、</span><br><span class="keep">男磨きにかかるお金が</span><br>下がるように作ってあります。</p>
+      <div class="table">
+        <div class="tr th"><div>やること</div><div>通常</div><div>会員価格</div></div>
+        <div class="tr"><div>頭皮診断</div><div>5,500円</div><div>無料</div></div>
+        <div class="tr"><div>ドライヤー</div><div>32,450円</div><div>21,000円</div></div>
+        <div class="tr"><div>ヘアアイロン</div><div>14,300円</div><div>7,700円</div></div>
+        <div class="tr"><div>シャンプー＆トリートメント</div><div>各2,800円</div><div>各2,100円</div></div>
+        <div class="tr"><div>提携サロン・ジム・クリニック</div><div>定価</div><div>体験無料／10〜50%OFFなど</div></div>
+      </div>
+      <p class="small" style="margin-top:18px"><span class="keep">提携先の割引・卸価格は</span><br>時期により変わります。一例です。</p>
+      <div class="quote">頭皮診断を1回受けるだけで、<br>初月の会費はもう取り返せます。</div>
+      <h3>払う場所、というより、<br><span class="marker">使えば得する場所。</span></h3>
+      <p><span class="keep">それくらいの感覚で、</span><br><span class="keep">気軽に始めてもらえたらと</span><br>思っています。</p>
+      <div class="section-head" style="margin-top:120px">
+        <span class="eyebrow">EVERY MONTH</span>
+        <h2>毎月、こんなものが届きます</h2>
+      </div>
+      <ul class="checklist">
+        <li><strong>曜日別の最新情報</strong><br>月＝美容／水＝筋トレ／金＝ヘア／日＝食事</li>
+        <li><strong>週1の講義と、毎週の振り返り</strong><br>実技つき・アーカイブあり</li>
+        <li><strong>今月のAI診断</strong><br>肌・眉・髪を再チェック</li>
+        <li><strong>今月の垢抜けチャレンジ</strong><br>1テーマを30日でやってみる</li>
+        <li><strong>今月の卸価格セレクト</strong><br>おすすめアイテム3〜5点</li>
+        <li><strong>月1のオフ会</strong><br>東京・大阪</li>
+      </ul>
+      <p class="lead" style="margin-top:60px"><strong><span class="keep">先月の自分より、</span><br>ちょっとだけ垢抜けてる。</strong><br><span class="keep">それが毎月積み上がっていく</span><br>感じです。</p>
+      <div class="cta-zone">今日から、プロに任せてみる</div>
+      <p class="cta-note">いつでも解約OK</p>
+    </div>
+  </section>
+
+  <section class="page dark" data-page="6">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">THE PROFESSIONALS</span>
+        <h2>あなたを担当する、<br><span class="accent">6人のプロ</span></h2>
+      </div>
+      <div class="teacher">
+        <img src="assets/ryota-profile.png" alt="">
+        <div class="teacher-copy"><h3>リョータ<br>主催・マインド</h3><p><span class="keep">YouTube登録37万人。</span><br><span class="keep">男磨きを5年・300万円かけて</span><br>遠回りした経験を発信。</p></div>
+      </div>
+      <div class="teacher"><img src="assets/teacher-mb-photo.png" alt=""><div class="teacher-copy"><h3>MB<br>ファッション</h3><p><span class="keep">現役のファッションプロデューサー。</span><br>著書多数・TV出演。</p></div></div>
+      <div class="teacher"><img src="assets/teacher-hair-photo.png" alt=""><div class="teacher-copy"><h3>松岡タクミ<br>ヘアスタイル</h3><p><span class="keep">大阪・梅田で独立。</span><br><span class="keep">2年でメンズサロン3店舗を経営。</span></p></div></div>
+      <div class="teacher"><img src="assets/teacher-body-photo.png" alt=""><div class="teacher-copy"><h3>笈川 勇斗<br>ボディメイク</h3><p><span class="keep">パーソナルジム代表。</span><br><span class="keep">指導実績1,000名以上、</span><br>年間3,000セッション以上。</p></div></div>
+      <div class="teacher"><img src="assets/teacher-food-photo.png" alt=""><div class="teacher-copy"><h3>かずき<br>食事</h3><p><span class="keep">Instagramフォロワー47万人。</span><br><span class="keep">自身も1年で54kgから74kgの</span><br>増量に成功。</p></div></div>
+      <div class="teacher"><img src="assets/teacher-beauty-photo.png" alt=""><div class="teacher-copy"><h3>相良 未来<br>美容</h3><p><span class="keep">美容看護師。スキンケア開発、</span><br><span class="keep">眉・頭皮アートメイクの</span><br>アーティスト。</p></div></div>
+      <div class="quote">一人が全部を<br>なんとなく見るのではなく、<br>各分野のプロが、<br>それぞれ専門の目で添削します。</div>
+    </div>
+  </section>
+
+  <section class="page" data-page="7">
+    <div class="wrap">
+      <span class="section-label">RESULTS</span>
+      <img class="results" src="assets/results.jpg" alt="受講生実績">
+      <p class="small" style="text-align:center;margin-top:28px"><span class="keep">受講生のプライバシーのため、</span><br>お名前は伏せています。</p>
+      <div class="quote">プロに見てもらいながら、<br>言われた通りにやっただけ。<br>それで十分なんです。</div>
+      <div class="section-head" style="margin-top:110px">
+        <span class="eyebrow">FOR YOU</span>
+        <h2><span class="brand-block"><img src="assets/brand-logo-original.png" alt="Men's Rise"></span>が向いている人</h2>
+      </div>
+      <ul class="checklist">
+        <li><span class="keep">男磨きを始めたいけど、</span><br>何からやればいいか分からない人</li>
+        <li><span class="keep">自己流でやってきたけど、</span><br>合っているか不安な人</li>
+        <li>一人だと続かない、仲間がほしい人</li>
+        <li><span class="keep">できるだけムダなお金をかけず、</span><br>賢く整えたい人</li>
+        <li>何歳からでも、ちゃんと変わりたい人</li>
+      </ul>
+      <p class="small" style="margin-top:35px"><span class="keep">逆に、「全部自分で調べて</span><br><span class="keep">自分で完結したい」という人には、</span><br>たぶん必要ないサービスです。</p>
+      <div class="section-head" style="margin-top:120px">
+        <span class="eyebrow">ONE YEAR LATER</span>
+        <h2>1年後を、ちょっと想像してみてください</h2>
+      </div>
+      <p><span class="keep">たとえば1年後、</span><br><span class="keep">同窓会や久しぶりの飲み会で。</span></p>
+      <p><span class="keep">同年代が「最近老けたな」</span><br><span class="keep">「腹が出てきた」と</span><br><span class="keep">言い合っているなかで、</span><br><span class="keep">あなたは、髪も肌も体型も整っていて、</span><br>なんとなく余裕がある。</p>
+      <p><span class="keep">「あれ、なんか感じ変わったね」と</span><br><span class="keep">言われて、悪い気はしない。</span><br><span class="keep">帰り道、ガラスに映った自分を見て、</span><br>ちょっといいなと思える。</p>
+      <div class="quote">特別な才能の話じゃなくて、<br>プロに見てもらいながら続けた人が、<br>普通に着くところです。</div>
+      <p><span class="keep">逆に、このまま自己流のままだと、</span><br><span class="keep">たぶん1年後も</span><br><span class="keep">「今年こそちゃんとやろう」と</span><br><span class="keep">言っている気がします。</span><br><span class="keep">その遠回り、僕は5年やったので、</span><br>よく分かるんです。</p>
+    </div>
+  </section>
+
+  <section class="page" data-page="8">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">PRICE</span>
+        <h2>料金について、<br>正直にお伝えします</h2>
+      </div>
+      <p><span class="keep">外見の個別コンサルは、</span><br><span class="keep">だいたい数十万円。</span><br><span class="keep">パーソナルジムでも、</span><br><span class="keep">2ヶ月で約38万円。</span><br><span class="keep">美容・髪・トレーナー・食事。</span><br><span class="keep">各分野のプロに個別で頼んだら、</span><br>1人で月数万円します。</p>
+      <div class="price-box">
+        <p class="monthly">6分野のプロにまとめて見てもらえて</p>
+        <div class="big">5,500円</div>
+        <p class="tax">月額・税込<br>1日あたり約183円</p>
+      </div>
+      <p class="lead" style="margin-top:55px"><span class="keep">提携割引や卸価格を使えば、</span><br><span class="keep">その会費自体の元も取れます。</span></p>
+      <h3 style="margin-top:70px">入会して最初に受け取れるもの</h3>
+      <ul class="checklist">
+        <li>あなた専用の男磨きカルテ</li><li>AI診断（肌・眉・髪）</li><li>ルーティンPDF集</li><li>「NG→OK 垢抜け図鑑」</li><li>会員限定ライブへの招待</li>
+      </ul>
+      <p class="lead" style="margin-top:45px"><strong>年払いプラン 55,000円</strong><br>実質2ヶ月分おトク</p>
+      <div class="quote">合わなければ、いつでも解約できます。<br>しばりも、違約金もありません。</div>
+      <h3>ひとつだけ、お願いがあります</h3>
+      <p><span class="keep">プロが一人ひとり添削するので、</span><br><span class="keep">受け入れられる人数に</span><br><span class="keep">限りがあります。</span><br><span class="keep">埋まったら、</span><br>一度募集を止めます。</p>
+      <p><span class="keep">提携割引はいま増やしている最中で、</span><br><span class="keep">充実したぶん、</span><br><span class="keep">会費も見直す可能性があります。</span><br><span class="keep">煽るつもりはないんですが、</span><br><span class="keep">始めるなら、早いほど得だとは思います。</span></p>
+      <div class="section-head" style="margin-top:120px">
+        <span class="eyebrow">FAQ</span>
+        <h2>よくいただく質問</h2>
+      </div>
+      <div class="faq"><h3>忙しくても続けられますか？</h3><p><span class="keep">むしろ忙しい人向けです。</span><br><span class="keep">プロが「次これ」を渡すので、</span><br>手を動かすだけで大丈夫です。</p></div>
+      <div class="faq"><h3>カウンセリングはZoomですか？</h3><p><span class="keep">シートを記入してもらい、</span><br><span class="keep">プロがチャットで添削します。</span><br>顔出しは必須ではありません。</p></div>
+      <div class="faq"><h3>地方に住んでいても大丈夫ですか？</h3><p><span class="keep">添削も講義も質問も、</span><br><span class="keep">全部オンライン＆チャット。</span><br>卸価格の購入も全国対応です。</p></div>
+      <div class="faq"><h3>一人でもできそうな気がします。</h3><p><span class="keep">「合ってるか分からないまま続ける」</span><br><span class="keep">状態をプロに見てもらうことで、</span><br>ムダがかなり減ります。</p></div>
+      <div class="faq"><h3>初心者すぎて不安です。</h3><p><span class="keep">初心者ほど伸びます。</span><br><span class="keep">「何から」を全部プロが決めるので、</span><br>知識ゼロで大丈夫です。</p></div>
+      <div class="faq"><h3>年齢は関係ありますか？</h3><p><span class="keep">関係ありません。</span><br><span class="keep">落ち着いた魅力は、</span><br><span class="keep">年齢を重ねるほど深まるので、</span><br>何歳からでも大丈夫です。</p></div>
+      <div class="section-head" style="margin-top:120px">
+        <span class="eyebrow">MESSAGE</span>
+        <h2>最後に、少しだけ僕の話を</h2>
+      </div>
+      <p><span class="keep">僕、いろんな国をまわって</span><br><span class="keep">思ったんですけど、</span><br><span class="keep">海外の男の人って、</span><br><span class="keep">体型や年齢に関係なく、</span><br><strong><span class="keep">「自分はこう在りたい」という</span><br>軸を持ってる</strong><br>人が多いんですよ。</p>
+      <p><span class="keep">日本は世界で一番好きな国だけど、</span><br><span class="keep">自信を持って、</span><br><span class="keep">自分の人生を楽しんでいる男性が、</span><br><span class="keep">もっと増えたらいいなと</span><br>思っています。</p>
+      <p><strong>MEN'S RISE</strong>は、<br><span class="keep">自己流で迷っている人が、</span><br><span class="keep">一人で止まってしまわないように</span><br>作った、<br><strong>「任せられる場所」</strong>です。</p>
+    </div>
+    <div class="final">
+      <div class="wrap">
+        <span class="eyebrow">MEN'S RISE</span>
+        <p class="lead" style="margin-top:55px">もう、一人で調べなくていい。</p>
+        <h2>男磨きは、<br><span class="accent">プロに任せる時代へ。</span></h2>
+        <p><span class="keep">まず入ってみて、</span><br><span class="keep">合わなければ辞めればいい。</span><br><span class="keep">もし「ちゃんと変わりたい」という</span><br><span class="keep">気持ちが少しでもあるなら、</span><br><span class="keep">そのきっかけに、</span><br><span class="keep">ここを使ってもらえたら嬉しいです。</span></p>
+        <div class="cta-zone">今日から、プロに任せてみる<br>月5,500円・いつでも解約OK</div>
+        <p class="cta-note">スマホから3分で登録 ／ 今日から、今月号が届きます。</p>
+        <p class="small" style="margin-top:70px"><span class="keep">もっと本格的に、マンツーマンで</span><br><span class="keep">集中的に変わりたい方へ。</span><br><span class="keep">上位プランのご案内も、</span><br><span class="keep">入会後にご用意しています。</span><br><span class="keep">まずは、月5,500円の「丸投げ」から。</span></p>
+        <nav class="legal-links" aria-label="法的情報">
+          <a href="https://info.opt--in.com/page/5N25GeCStQbI" target="_blank" rel="noopener noreferrer">特定商取引法に基づく表記</a>
+          <a href="https://info.opt--in.com/p/8hFSWQYS9Svq" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <script>
+    document.querySelectorAll(
+      "p:not(.price):not(.tax):not(.cta-note), li, .feature p, .card p, .faq p"
+    ).forEach((element) => {
+      element.querySelectorAll("br").forEach((br) => br.replaceWith(" "));
+    });
+    const selected = new URLSearchParams(location.search).get("page");
+    if (selected) {
+      document.querySelectorAll(".page").forEach((page) => {
+        page.style.display = page.dataset.page === selected ? "block" : "none";
+      });
+    }
+  </script>
+</body>
+</html>
